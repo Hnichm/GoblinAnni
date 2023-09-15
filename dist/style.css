@@ -1,0 +1,100 @@
+/* Title grid */
+
+.title-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  outline: solid black 1px;
+  grid-template-areas:
+    "game-title game-title game-title game-title game-title"
+    ". . . kill-container .";
+  margin-bottom: 1rem;
+}
+
+.game-title {
+  grid-area: game-title;
+  justify-self: center;
+}
+
+.kill-container {
+  grid-area: kill-container;
+  align-self: end;
+  outline: solid black 1px;
+}
+
+/* Combat grid */
+
+.combat-ui-container {
+  display: grid;
+  height: 75%;
+  width: 100%;
+  outline: solid rgb(141, 196, 209) 1px;
+  grid-template-rows: 2rem 2rem 1fr 1fr 1fr 2rem 2rem;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 5px;
+  grid-template-areas:
+    "enemy-health . . . . ."
+    "enemy-name . . . . ."
+    "enemy-image . . . . ."
+    ". . . . . ."
+    ". . . . . player-image"
+    "combat-log combat-log skill1 skill2 skill3 player-name"
+    "combat-log combat-log skill1 skill2 skill3 player-health";
+}
+
+.enemy-health {
+  grid-area: enemy-health;
+  outline: solid green 1px;
+}
+
+.enemy-name {
+  grid-area: enemy-name;
+  outline: solid blue 1px;
+}
+
+.enemy-image {
+  grid-area: enemy-image;
+  outline: solid purple 1px;
+  justify-self: end;
+  width: 8rem;
+  height: 8rem;
+}
+
+.player-image {
+  grid-area: player-image;
+  outline: solid blue 1px;
+  width: 8rem;
+  height: 8rem;
+}
+
+.player-name {
+  grid-area: player-name;
+  outline: solid green 1px;
+}
+
+.player-health {
+  grid-area: player-health;
+  outline: solid red 1px;
+}
+
+.combat-log {
+  grid-area: combat-log;
+  outline: solid blue 1px;
+  height: 4rem;
+  overflow-y: auto;
+}
+
+.skill1 {
+  grid-area: skill1;
+  outline: solid red 1px;
+}
+
+.skill2 {
+  grid-area: skill2;
+  outline: solid red 1px;
+}
+
+.skill3 {
+  grid-area: skill3;
+  outline: solid red 1px;
+}
