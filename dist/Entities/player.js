@@ -5,6 +5,10 @@ export default class Player {
     this.kills = 0;
   }
 
+  calculateStrength() {
+    return this.health + this.damage;
+  }
+
   getHealth() {
     return this.health;
   }

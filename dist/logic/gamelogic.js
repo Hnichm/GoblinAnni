@@ -1,6 +1,9 @@
 import Player from "../Entities/player.js";
 import Enemy from "../Entities/enemy.js";
-import GoblinBrute from "../Entities/goblin_brute.js";
+import GoblinBrute from "../Entities/goblinBrute.js";
+import GoblinBerserker from "../Entities/goblinBerserker.js";
+import GoblinBloodletter from "../Entities/goblinBloodletter.js";
+import { spawnEnemy } from "./spawner.js";
 
 // Player variables
 const player = new Player(100, 10);
@@ -102,7 +105,7 @@ initDOM();
 function enemyDeath() {
   if (enemy.isDead()) {
     player.kills += 1;
-    enemy = new GoblinBrute();
+    enemy = spawnEnemy(player);
     newEnemySpawned = true;
   }
 }
@@ -161,3 +164,5 @@ skill2.addEventListener("click", () => {
     updateCombatLog(`On cooldown, try again in ${healTurnCooldown} turns.`);
   }
 });
+
+console.log(spawnEnemy.randomIndex);

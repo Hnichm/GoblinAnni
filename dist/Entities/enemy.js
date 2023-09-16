@@ -23,6 +23,10 @@ export default class Enemy {
     target.takeDamage(this.damage);
   }
 
+  calculateStrength() {
+    return this.damage + this.health;
+  }
+
   isDead() {
     return this.health <= 0;
   }
