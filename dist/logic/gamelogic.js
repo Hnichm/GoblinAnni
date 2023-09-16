@@ -32,6 +32,8 @@ const turnOverEvent = new Event("turnOver");
 document.addEventListener(
   "turnOver",
   function (e) {
+    playerTurn = false;
+
     if (!playerTurn) {
       if (newEnemySpawned) {
         newEnemySpawned = false;
@@ -119,7 +121,7 @@ async function playerAction(skill) {
       enemyDeath();
       updateDOM();
       await delay(500);
-      playerTurn = false;
+
       document.dispatchEvent(turnOverEvent);
       isActionInProgress = false;
       break;
@@ -134,7 +136,7 @@ async function playerAction(skill) {
       healCooldown = true;
       await delay(500);
       updateDOM();
-      playerTurn = false;
+
       document.dispatchEvent(turnOverEvent);
       healTurnCooldown = 2;
       isActionInProgress = false;
