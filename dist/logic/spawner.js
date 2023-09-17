@@ -19,7 +19,8 @@ export function spawnEnemy(player) {
 
   const enemies = enemyList.filter((enemy) => {
     const enemyStrength = enemy.calculateStrength();
-    return Math.abs(playerStrength - enemyStrength) <= 20;
+    // TODO change return value to a balanced number
+    return Math.abs(playerStrength - enemyStrength) <= 200;
   });
 
   const randomIndex = Math.floor(Math.random() * enemies.length);

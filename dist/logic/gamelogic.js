@@ -105,6 +105,8 @@ initDOM();
 function enemyDeath() {
   if (enemy.isDead()) {
     player.kills += 1;
+    player.calculateExperience(enemy);
+    player.levelUp();
     enemy = spawnEnemy(player);
     newEnemySpawned = true;
   }
