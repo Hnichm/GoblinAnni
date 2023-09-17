@@ -1,6 +1,7 @@
 export default class Player {
-  constructor(health, damage) {
-    this.health = health;
+  constructor(maxHealth, damage) {
+    this.maxHealth = maxHealth;
+    this.health = maxHealth;
     this.damage = damage;
     this.kills = 0;
     this.level = 1;
@@ -23,6 +24,9 @@ export default class Player {
       console.log("Level up!");
       this.level += 1;
       this.experience = 0;
+      this.maxHealth += Math.floor(Math.random() * 10) + 1;
+      this.damage += Math.floor(Math.random() * 3) + 1;
+      this.health = this.maxHealth;
     }
     console.log(`Level: ${this.level}`);
     console.log(`Current experience: ${this.experience}`);
@@ -52,8 +56,8 @@ export default class Player {
   heal(amount) {
     let originalHealth = this.health;
     this.health += amount;
-    if (this.health > 100) {
-      this.health = 100;
+    if (this.health > this.maxHealth) {
+      this.health = this.maxHealth;
     }
     return this.health - originalHealth;
   }
