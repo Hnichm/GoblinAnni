@@ -28,9 +28,28 @@ export default class Player {
       this.damage += Math.floor(Math.random() * 3) + 1;
       this.health = this.maxHealth;
     }
+    this.levelUpUI();
     console.log(`Level: ${this.level}`);
     console.log(`Current experience: ${this.experience}`);
     console.log(`Experience needed to level up: ${this.experienceToLevelUp()}`);
+  }
+
+  levelUpUI() {
+    document.querySelector(".level-up-ui-container").style.display = "grid";
+    let skill1 = document.querySelector(".pickSkill1");
+    let skill2 = document.querySelector(".pickSkill2");
+    let skill3 = document.querySelector(".pickSkill3");
+    let skills = [skill1, skill2, skill3];
+
+    skills.forEach((skill) => {
+      skill.addEventListener("click", () => {
+        this.hideLevelUpUI();
+      });
+    });
+  }
+
+  hideLevelUpUI() {
+    document.querySelector(".level-up-ui-container").style.display = "none";
   }
 
   calculateStrength() {

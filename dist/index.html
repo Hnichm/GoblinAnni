@@ -7,36 +7,46 @@
     <title>Document</title>
   </head>
   <body>
-    <section class="ui-title">
-      <div class="title-container">
-        <div class="game-title">Goblin Annihilator</div>
-        <aside class="kill-container">
-          <span class="kills">Kills:</span>
-        </aside>
-      </div>
-    </section>
-    <section class="combat-ui">
-      <div class="combat-ui-container">
-        <div class="enemy-health">Enemy Health</div>
-        <div class="enemy-name">Enemy name</div>
-        <div class="enemy-image">
-          <img class="enemy-image-tag" />
+    <div class="ui-wrapper">
+      <section class="ui-title">
+        <div class="title-container">
+          <div class="game-title">Goblin Annihilator</div>
+          <aside class="kill-container">
+            <span class="kills">Kills:</span>
+          </aside>
         </div>
-        <div class="player-image">
-          <img
-            src="../assets/Goblin_Annihilator.png"
-            alt="Goblin Annihilator"
-            srcset=""
-          />
+      </section>
+      <section class="combat-ui">
+        <div class="combat-ui-container">
+          <div class="enemy-health">Enemy Health</div>
+          <div class="enemy-name">Enemy name</div>
+          <div class="enemy-image">
+            <img class="enemy-image-tag" />
+          </div>
+          <div class="player-image">
+            <img
+              src="../assets/Goblin_Annihilator.png"
+              alt="Goblin Annihilator"
+              srcset=""
+            />
+          </div>
+          <div class="player-name">Player name</div>
+          <div class="player-health">Player health</div>
+          <div class="combat-log">Combat log</div>
+          <div class="skill1">Skill 1</div>
+          <div class="skill2">skill 2</div>
+          <div class="skill3">Skill 3</div>
         </div>
-        <div class="player-name">Player name</div>
-        <div class="player-health">Player health</div>
-        <div class="combat-log">Combat log</div>
-        <div class="skill1">Skill 1</div>
-        <div class="skill2">skill 2</div>
-        <div class="skill3">Skill 3</div>
-      </div>
-    </section>
+      </section>
+      <section class="level-up-ui">
+        <div class="level-up-ui-container">
+          <h2>Pick A Skill</h2>
+          <button class="pickSkill1">Skill 1</button>
+          <button class="pickSkill2">Skill 2</button>
+          <button class="pickSkill3">Skill 3</button>
+        </div>
+      </section>
+    </div>
   </body>
   <script type="module" src="./logic/gamelogic.js"></script>
 </html>

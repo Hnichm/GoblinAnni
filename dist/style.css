@@ -1,5 +1,9 @@
 /* Title grid */
 
+.ui-wrapper {
+  display: relative;
+}
+
 .title-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -96,5 +100,33 @@
 
 .skill3 {
   grid-area: skill3;
+  outline: solid red 1px;
+}
+
+.level-up-ui-container {
+  position: absolute;
+  top: 25%;
+  display: grid;
+  z-index: 1;
+  height: 75%;
+  width: 100%;
+  outline: solid pink 2px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "pickSkill1 pickSkill2 pickSkill3";
+  display: none;
+}
+
+.pickSkill1 {
+  grid-area: pickSkill1;
+  outline: solid red 1px;
+}
+
+.pickSkill2 {
+  grid-area: pickSkill2;
+  outline: solid red 1px;
+}
+
+.pickSkill3 {
+  grid-area: pickSkill3;
   outline: solid red 1px;
 }
