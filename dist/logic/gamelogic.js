@@ -1,5 +1,6 @@
 import Player from "../Entities/player.js";
 import Enemy from "../Entities/enemy.js";
+import getRandomInt from "./utilities.js";
 import GoblinBrute from "../Entities/goblinBrute.js";
 import GoblinBerserker from "../Entities/goblinBerserker.js";
 import GoblinBloodletter from "../Entities/goblinBloodletter.js";
@@ -11,6 +12,8 @@ let playerTurn = true;
 let isActionInProgress = false;
 let healCooldown = false;
 let healTurnCooldown = 0;
+let berserkCooldown = false;
+let berserkTurnCooldown = 0;
 
 // enemy spawn
 let newEnemySpawned = false;
@@ -48,6 +51,12 @@ document.addEventListener(
       }
       if (healTurnCooldown == 0) {
         healCooldown = false;
+      }
+      if (berserkCooldown === true) {
+        berserkTurnCooldown -= 1;
+      }
+      if (berserkTurnCooldown === 0) {
+        berserkCooldown = false;
       }
       enemy.attack(player);
       updateCombatLog(`${enemy.name} attacked you for ${enemy.damage} damage.`);
@@ -146,6 +155,28 @@ async function playerAction(skill) {
       healTurnCooldown = 2;
       isActionInProgress = false;
       break;
+
+    case "berserk":
+      if (isActionInProgress) {
+        break;
+      }
+      isActionInProgress = true;
+      berserkCooldown = true;
+      let randomHit = getRandomInt(1, player.damage);
+      enemy.health -= randomHit;
+      updateCombatLog(`Attacked ${enemy.name} for ${randomHit} damage.`);
+      enemyDeath();
+      updateDOM();
+      await delay(200);
+      randomHit = getRandomInt(1, player.damage);
+      enemy.health -= randomHit;
+      updateCombatLog(`Attacked ${enemy.name} for ${randomHit} damage.`);
+      enemyDeath();
+      updateDOM();
+      await delay(500);
+      document.dispatchEvent(turnOverEvent);
+      berserkTurnCooldown = 3;
+      isActionInProgress = false;
   }
 }
 
@@ -162,8 +193,18 @@ skill2.addEventListener("click", () => {
   if (playerTurn && player.getHealth() > 0 && healCooldown === false) {
     playerAction("heal");
   }
-  if (healCooldown === true && !isActionInProgress) {
+  if (healCooldown && !isActionInProgress) {
     updateCombatLog(`On cooldown, try again in ${healTurnCooldown} turns.`);
+  }
+});
+
+// Berserk
+skill3.addEventListener("click", () => {
+  if (playerTurn && player.getHealth() > 0 && berserkCooldown === false) {
+    playerAction("berserk");
+  }
+  if (berserkCooldown && !isActionInProgress) {
+    updateCombatLog(`On cooldown, try again in ${berserkTurnCooldown} turns.`);
   }
 });
 
