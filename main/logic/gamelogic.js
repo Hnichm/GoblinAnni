@@ -1,9 +1,9 @@
-import Player from "../Entities/player.js";
-import Enemy from "../Entities/enemy.js";
+import Player from "../entities/player.js";
+import Enemy from "../entities/enemy.js";
 import getRandomInt from "./utilities.js";
-import GoblinBrute from "../Entities/goblinBrute.js";
-import GoblinBerserker from "../Entities/goblinBerserker.js";
-import GoblinBloodletter from "../Entities/goblinBloodletter.js";
+import GoblinBrute from "../entities/goblinBrute.js";
+import GoblinBerserker from "../entities/goblinBerserker.js";
+import GoblinBloodletter from "../entities/goblinBloodletter.js";
 import { spawnEnemy } from "./spawner.js";
 
 // Player variables
@@ -207,5 +207,3 @@ skill3.addEventListener("click", () => {
     updateCombatLog(`On cooldown, try again in ${berserkTurnCooldown} turns.`);
   }
 });
-
-console.log(spawnEnemy.randomIndex);

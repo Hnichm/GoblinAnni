@@ -1,6 +1,6 @@
-import GoblinBerserker from "../Entities/goblinBerserker.js";
-import GoblinBloodletter from "../Entities/goblinBloodletter.js";
-import GoblinBrute from "../Entities/goblinBrute.js";
+import GoblinBerserker from "../entities/goblinBerserker.js";
+import GoblinBloodletter from "../entities/goblinBloodletter.js";
+import GoblinBrute from "../entities/goblinBrute.js";
 
 export function spawnEnemy(player) {
   const playerStrength = player.calculateStrength();

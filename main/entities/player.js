@@ -10,7 +10,6 @@ export default class Player {
 
   calculateExperience(enemy) {
     this.experience += enemy.calculateStrength();
-    console.log(this.experience);
   }
 
   experienceToLevelUp() {
@@ -25,8 +24,9 @@ export default class Player {
       this.level += 1;
       this.experience = 0;
       this.maxHealth += Math.floor(Math.random() * 10) + 1;
-      this.damage += Math.floor(Math.random() * 3) + 1;
+      this.damage += 1;
       this.health = this.maxHealth;
+      console.log(this.damage);
     }
     this.levelUpUI();
     console.log(`Level: ${this.level}`);
@@ -41,10 +41,25 @@ export default class Player {
     let skill3 = document.querySelector(".pickSkill3");
     let skills = [skill1, skill2, skill3];
 
-    skills.forEach((skill) => {
-      skill.addEventListener("click", () => {
+    const skillClickHandler = (event) => {
+      if (event.target === skill1) {
+        this.damage = this.damage + 1;
+        console.log(this.damage);
+        event.target.removeEventListener("click", skillClickHandler);
         this.hideLevelUpUI();
-      });
+      } else if (event.target === skill2) {
+        console.log("chose skill 2");
+        event.target.removeEventListener("click", skillClickHandler);
+        this.hideLevelUpUI();
+      } else if (event.target === skill3) {
+        console.log("chose skill 3");
+        event.target.removeEventListener("click", skillClickHandler);
+        this.hideLevelUpUI();
+      }
+    };
+
+    skills.forEach((skill) => {
+      skill.addEventListener("click", skillClickHandler);
     });
   }
 

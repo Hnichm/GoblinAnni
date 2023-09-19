@@ -103,6 +103,8 @@
   outline: solid red 1px;
 }
 
+/* Level up container */
+
 .level-up-ui-container {
   position: absolute;
   top: 25%;
